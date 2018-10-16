@@ -92,6 +92,8 @@
   shell: |
     gridinit_cmd reload
     gridinit_cmd restart  {{openio_ecd_namespace}}-ecd-{{openio_ecd_serviceid}}
-  when: _ecd_conf.changed
+  when:
+    - _ecd_conf.changed
+    - not openio_ecd_provision_only
   tags: configure
 ...
